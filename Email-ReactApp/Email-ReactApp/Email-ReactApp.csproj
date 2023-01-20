@@ -8,8 +8,9 @@
     <IsPackable>false</IsPackable>
     <SpaRoot>client-app\</SpaRoot>
     <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
-    <SpaProxyServerUrl>https://localhost:44434</SpaProxyServerUrl>
+    <SpaProxyServerUrl>https://localhost:44472</SpaProxyServerUrl>
     <SpaProxyLaunchCommand>npm start</SpaProxyLaunchCommand>
+    <RootNamespace>Email_ReactApp</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
@@ -22,6 +23,20 @@
     <Content Remove="$(SpaRoot)**" />
     <None Remove="$(SpaRoot)**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="client-app\src\aspnetcore-https.ts" />
+    <None Remove="client-app\src\aspnetcore-react.ts" />
+    <None Remove="client-app\src\components\Email.tsx" />
+    <None Remove="client-app\src\components\NavBar.tsx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="client-app\src\aspnetcore-https.ts" />
+    <TypeScriptCompile Include="client-app\src\aspnetcore-react.ts" />
+    <TypeScriptCompile Include="client-app\src\components\Email.tsx" />
+    <TypeScriptCompile Include="client-app\src\components\NavBar.tsx" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
